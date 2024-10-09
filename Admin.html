@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form with Light Background</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+    
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+    
+    body {
+      display: flex;
+      height: 100vh;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff; /* Changed background to white */
+    }
+    
+    .login-form {
+      position: relative;
+      width: 370px;
+      background: #f7f7f7; /* Light background for the form */
+      padding: 40px 35px 60px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    
+    .text {
+      font-size: 30px;
+      color: #333; /* Darker text color */
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    
+    form {
+      margin-top: 40px;
+    }
+    
+    form .field {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .field .fas {
+      height: 50px;
+      width: 60px;
+      color: #666; /* Lighter icon color */
+      font-size: 20px;
+      line-height: 50px;
+      border: 1px solid #ccc; /* Light border */
+      border-right: none;
+      border-radius: 5px 0 0 5px;
+      background: #eee; /* Light gray background */
+    }
+    
+    .field input,
+    form button {
+      height: 50px;
+      width: 100%;
+      outline: none;
+      font-size: 19px;
+      color: #333;
+      padding: 0 15px;
+      border-radius: 0 5px 5px 0;
+      border: 1px solid #ccc; /* Light border */
+      background: #fff; /* White background */
+    }
+    
+    input:focus {
+      color: #0066cc; /* Blue focus color */
+      box-shadow: 0 0 5px rgba(0, 102, 204, 0.2), inset 0 0 5px rgba(0, 102, 204, 0.1);
+      background: #eef; /* Light blue background */
+      animation: glow 0.8s ease-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      0% {
+        border-color: #0066cc;
+        box-shadow: 0 0 5px rgba(0, 102, 204, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      100% {
+        border-color: #3399ff;
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.6), inset 0 0 10px rgba(0, 102, 204, 0.4);
+      }
+    }
+    
+    button {
+      margin-top: 30px;
+      border-radius: 5px !important;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      background: #0066cc; /* Blue button background */
+      color: white; /* White button text */
+      border: none;
+    }
+    
+    button:hover {
+      background: #005bb5; /* Darker blue on hover */
+      box-shadow: 0 0 5px rgba(0, 102, 204, 0.3), 0 0 10px rgba(0, 102, 204, 0.2),
+        0 0 15px rgba(0, 102, 204, 0.1), 0 2px 0 black;
+    }
+    
+    .link {
+      margin-top: 25px;
+      color: #666; /* Light gray link */
+    }
+    
+    .link a {
+      color: #0066cc; /* Blue links */
+      text-decoration: none;
+    }
+    
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-form">
+    <div class="text">
+      LOGIN
+    </div>
+    <form id="loginForm">
+      <div class="field">
+        <div class="fas fa-envelope"></div>
+        <input type="text" placeholder="Email or Phone" required>
+      </div>
+      <div class="field">
+        <div class="fas fa-lock"></div>
+        <input type="password" placeholder="Password" required>
+      </div>
+      <button type="submit">LOGIN</button>
+      <div class="link">
+        <!-- Optional link for forgot password or other actions -->
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Add an event listener to the login form
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the form from submitting
+      // Redirect to the admin dashboard
+      window.location.href = 'admin_dashboard.html';
+    });
+  </script>
+</body>
+</html>

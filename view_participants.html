@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Attendance Table</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Apply the same colors from the login page for the header */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+        }
+
+        /* Header styling */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        header .logo {
+            color: #000;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        header .logo span {
+            color: #ff359b; /* Matching the pink color */
+        }
+
+        header .navbar a {
+            color: #000;
+            text-decoration: none;
+            margin-left: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        header .navbar a:hover {
+            color: #00d2ff; /* Matching the blue color */
+        }
+
+        header .navbar a.active {
+            color: #ff359b; /* Matching the pink color */
+        }
+
+        /* Burger menu icon */
+        .bx-menu {
+            font-size: 30px;
+            color: #000;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .bx-menu {
+                display: block;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 80px;
+                left: -70%;
+                width: 90%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: 0.5s;
+            }
+
+            .navbar a {
+                color: #fff;
+                margin: 10px 0;
+                font-size: 20px;
+            }
+
+            .navbar.show {
+                left: 0;
+            }
+        }
+
+        /* Attendance table styles */
+        .container {
+            max-width: 800px;
+            margin: 100px auto 0; /* Adjust margin to prevent overlap with navbar */
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        td {
+            background-color: #fdfdfe;
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <a href="index.html" class="logo">Activities Hub<span></span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="Add_Events.html"> Add Events</a>
+            <a href="view_events.html"> View Events</a>
+            <a href="view_participants.html"class="active"> View Participants</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Container for the attendance table -->
+    <div class="container">
+        <h1>Event Attendance</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Event Name</th>
+                    <th>Attended or Not</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>001</td>
+                    <td>John Doe</td>
+                    <td>Tech Conference</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>002</td>
+                    <td>Jane Smith</td>
+                    <td>Art Expo</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>003</td>
+                    <td>Emily Johnson</td>
+                    <td>Music Festival</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>004</td>
+                    <td>Michael Brown</td>
+                    <td>Food Fair</td>
+                    <td>No</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Script to toggle navbar for mobile -->
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

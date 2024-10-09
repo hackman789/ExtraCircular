@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracurricular Activity Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Apply the same colors from the login page for the header */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+        }
+
+        /* Header styling to match colors */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        header .logo {
+            color: #000;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        header .logo span {
+            color: #ff359b; /* Matching the pink color */
+        }
+
+        header .navbar a {
+            color: #000;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        header .navbar a:hover {
+            color: #00d2ff; /* Matching the blue color */
+        }
+
+        header .navbar a.active {
+            color: #ff359b; /* Matching the pink color */
+        }
+
+        /* Burger menu icon */
+        .bx-menu {
+            font-size: 30px;
+            color: #000;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .bx-menu {
+                display: block;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: 0.5s;
+            }
+
+            .navbar a {
+                color: #fff;
+                margin: 10px 0;
+                font-size: 20px;
+            }
+
+            .navbar a.active {
+                color: #ff359b;
+            }
+
+            .navbar.show {
+                left: 0;
+            }
+        }
+
+        /* Optional: Add animations to match the login page theme */
+        header .navbar a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #ff359b;
+            transition: width 0.4s;
+        }
+
+        header .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* Image section styling */
+        .image-section {
+            margin-top: 120px; /* To push the content below the fixed navbar */
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .image-section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-section img {
+            width: 1200px;
+            height: 700px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 15px;
+        }
+
+        .image-section img:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        .image-section p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        /* Responsive text and image */
+        @media (max-width: 768px) {
+            .image-section img {
+                max-width: 100%;
+            }
+
+            .image-section h2 {
+                font-size: 2rem;
+            }
+
+            .image-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header design -->
+    <header class="header" id="header">
+        <a href="index.html" class="logo">Activities Hub<span></span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="Add_Certificates.html">Add Certificate</a>
+            <a href="view_eventsuser.html"> Register Events</a>
+            <a href="index.html">Logout</a> <!-- Link to login.html -->
+        </nav>
+    </header>
+
+    <!-- Image section -->
+    <div class="image-section">
+        <h2>Welcome to the Extracurricular Activity Hub!</h2>
+        <img src="images/user (2).jpg" alt="Extracurricular Activities">
+        <p>Stay engaged with various events and certificates!</p>
+    </div>
+
+    <script>
+        // Script to toggle navbar for mobile
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #081b29;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 9%;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.header.sticky {
+    background-color: var(--bg-color);
+}
+
+.logo {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.navbar {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar a {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar a.active,
+.navbar a:hover {
+    color: var(--main-color);
+}
+
+.bx-menu {
+    display: none;
+    font-size: 3rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        top: 100%;
+        right: -100%;
+        flex-direction: column;
+        background-color: var(--bg-color);
+        width: 50%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s ease;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .navbar a {
+        margin: 1.5rem 0;
+    }
+
+    .bx-menu {
+        display: block;
+    }
+}
+
+/* Section styles (for demo purposes) */
+section {
+    padding: 10rem 5%;
+    text-align: center;
+    height: 100vh;
+}
+
+section h1 {
+    font-size: 4rem;
+    color: var(--main-color);
+}

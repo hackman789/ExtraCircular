@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate Manager</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root{
+        --index: calc(1vw + 1vh);
+        --transition: cubic-bezier(.1, .7, 0, 1);
+    }
+
+    body{
+        background-color: white;
+    }
+
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .items{
+        display: flex;
+        gap: 0.4rem;
+        perspective: calc(var(--index) * 35);
+    }
+
+    .item{
+        width: calc(var(--index) * 3);
+        height: calc(var(--index) * 12);
+        background-color: #222;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        filter: grayscale(1) brightness(.5);
+        transition: transform 1.25s var(--transition), filter 3s var(--transition), width 1.25s var(--transition);
+        will-change: transform, filter, rotateY, width;
+        position: relative;
+    }
+
+    .item::before, .item::after{
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 20px;
+        right: calc(var(--index) * -1);
+    }
+
+    .item::after{
+        left: calc(var(--index) * -1);
+    }
+
+    .items .item:hover{
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 10));
+    }
+
+    /*Right*/
+    .items .item:hover + *{
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
+        z-index: -1;
+    }
+
+    .items .item:hover + * + *{
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 5.6)) rotateY(40deg);
+        z-index: -2;
+    }
+
+    .items .item:hover + * + * + *{
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 2.5)) rotateY(30deg);
+        z-index: -3;
+    }
+
+    .items .item:hover + * + * + * + *{
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * .6)) rotateY(15deg);
+        z-index: -4;
+    }
+
+    /*Left*/
+    .items .item:has( + :hover){
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
+    }
+
+    .items .item:has( + * + :hover){
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 5.6)) rotateY(-40deg);
+    }
+
+    .items .item:has( + * + * + :hover){
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 2.5)) rotateY(-30deg);
+    }
+
+    .items .item:has( + * + * + * + :hover){
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * .6)) rotateY(-15deg);
+    }
+
+    .items .item:active, .items .item:focus {
+        width: 28vw;
+        filter: inherit;
+        z-index: 100;
+        transform: translateZ(calc(var(--index) * 10));
+        margin: 0 .45vw;
+    }
+
+    .upload-container {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    button {
+        background-color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+        }
+
+        /* Header styling to match colors */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        header .logo {
+            color: #000;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        header .logo span {
+            color: #ff359b; /* Matching the pink color */
+        }
+
+        header .navbar a {
+            color: #000;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        header .navbar a:hover {
+            color: #00d2ff; /* Matching the blue color */
+        }
+
+        header .navbar a.active {
+            color: #ff359b; /* Matching the pink color */
+        }
+
+        /* Burger menu icon */
+        .bx-menu {
+            font-size: 30px;
+            color: #000;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .bx-menu {
+                display: block;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: 0.5s;
+            }
+
+            .navbar a {
+                color: #fff;
+                margin: 10px 0;
+                font-size: 20px;
+            }
+
+            .navbar a.active {
+                color: #ff359b;
+            }
+
+            .navbar.show {
+                left: 0;
+            }
+        }
+
+        /* Optional: Add animations to match the login page theme */
+        header .navbar a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #ff359b;
+            transition: width 0.4s;
+        }
+
+        header .navbar a:hover::after {
+            width: 100%;
+        }
+  </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <a href="index.html" class="logo">Activities Hub<span></span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <nav class="navbar" id="navbar">
+            <a href="User_dashboard.html">Home</a>
+            <a href="Add_Certificates.html" class="active">Add Certificates</a>
+            <a href="view_eventsuser.html">Register Events</a>
+            <a href="index.html">Logout</a>
+        </nav>
+    </header>
+
+<div class="wrapper">
+  <div class="items" id="gallery">
+    <!-- Existing images -->
+    <div class="item" tabindex="0" style="background-image: url(/Images/1.avif)"></div>
+    <div class="item" tabindex="0" style="background-image: url(/Images/2.avif)"></div>
+    <div class="item" tabindex="0" style="background-image: url(/Images/3.avif)"></div>
+  </div>
+</div>
+
+<!-- File upload section -->
+<div class="upload-container">
+  <input type="file" id="imageUpload" accept="image/*">
+  <button onclick="document.getElementById('imageUpload').click()">Upload Certificate</button>
+</div>
+
+<script>
+  // Listen for file selection and handle upload
+  document.getElementById('imageUpload').addEventListener('change', function() {
+    const input = this;
+    const gallery = document.getElementById('gallery');
+
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        const newItem = document.createElement('div');
+        newItem.classList.add('item');
+        newItem.setAttribute('tabindex', '0');
+        newItem.style.backgroundImage = `url(${e.target.result})`;
+
+        gallery.appendChild(newItem);
+      };
+      
+      reader.readAsDataURL(input.files[0]);
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS -->
+    <style>
+        /* Basic styles for the form */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("./images/free-background-picjumbo-com.jpeg");
+    background-size: cover; /* Ensures the background image covers the entire screen */
+    background-position: center; /* Centers the background image */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styling */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Keeps the navbar on top */
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff; /* Logo color */
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
+/* Container for the registration form */
+.container {
+    max-width: 600px;
+    margin: 120px auto 30px; /* Add margin-top to avoid overlap with navbar */
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for better visibility */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1.text-center {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.registration-form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.registration-form label {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.col-one-half {
+    width: 48%;
+    margin-right: 2%;
+}
+
+.col-one-half:nth-child(even) {
+    margin-right: 0;
+}
+
+.label-text {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="time"],
+input[type="date"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="time"]:focus,
+input[type="date"]:focus {
+    border-color: #80bdff;
+    outline: none;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button.submit {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.submit:hover {
+    background-color: #0056b3;
+}
+
+label.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+label.checkbox input {
+    margin-right: 10px;
+}
+
+/* Adjust form columns for small screens */
+@media (max-width: 600px) {
+    .col-one-half {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="logo">Activities Hub</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Add_Events.html" class="active">Add Events</a>
+            <a href="view_events.html">View Events</a>
+            <a href="view_participants.html">View Participants</a>
+            
+        </nav>
+    </header>
+
+    <div class="container">
+       
+        <h1 class="text-center">EVENT DETAILS</h1>
+
+        <form class="registration-form">
+            <label class="col-one-half">
+                <span class="label-text">EVENT NAME</span>
+                <input type="text" name="eventname" placeholder="Enter your Event Name" required>
+            </label>
+            <label class="col-one-half">
+                <span class="label-text">EVENT DESCRIPTION</span>
+                <input type="text" name="eventdescription" placeholder="Enter your Event Description" required>
+            </label>
+            <label class="col-one-half">
+                <span class="label-text">EVENT TIME</span>
+                <input type="time" name="time" required />
+            </label>
+            <label class="col-one-half">
+                <span class="label-text">EVENT DATE</span>
+                <input type="date" name="date" required />
+            </label>
+            <label>
+                <span class="label-text">Upload Profile Image</span>
+                <input type="file" name="profileImage" accept="image/*" required>
+            </label>
+            <div class="text-center">
+                <button class="submit" name="addevent" type="submit">ADD EVENT</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
